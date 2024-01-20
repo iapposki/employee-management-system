@@ -24,11 +24,11 @@ app.get('/status', async (req: Request, res: Response) => {
 
 // -------------------------------------------------------
 
-app.post('/employee', createEmployeeController)
-app.get('/employee/:employeeId', getEmployeeController)
-app.put('/employee/:employeeId', updateEmployeeController)
-app.delete('/employee/:employeeId', deleteEmployeeController)
-app.get('/employees', getEmployeesController)
+app.post('/employee', authenticate, createEmployeeController)
+app.get('/employee/:employeeId', authenticate, getEmployeeController)
+app.put('/employee/:employeeId', authenticate, updateEmployeeController)
+app.delete('/employee/:employeeId', authenticate, deleteEmployeeController)
+app.get('/employees', authenticate, getEmployeesController)
 
 // -----------------------------------------------------
 if (require.main === module) {
